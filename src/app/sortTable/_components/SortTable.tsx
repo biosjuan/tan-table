@@ -31,9 +31,6 @@ export const Table = () => {
     data,
     columns,
     columnResizeMode,
-    initialState: {
-      pagination: { pageSize: 5 },
-    },
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     getFilteredRowModel: getFilteredRowModel(),

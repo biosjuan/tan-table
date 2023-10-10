@@ -141,7 +141,7 @@ export const Table = () => {
   return (
     <div className='max-w-full overflow-x-auto'>
       <div className='w-full'>
-        <div className='shadow-md bg-white dark:bg-neutral-800 overflow-hidden sm:rounded-lg border rounded-md dark:border-neutral-500 pt-10 pb-10 pl-3 pr-3'>
+        <div className='shadow-md bg-white dark:bg-neutral-800 overflow-x-auto sm:rounded-lg border rounded-md dark:border-neutral-500 pt-10 pb-10 pl-3 pr-3'>
           <div className='mb-3'>
             <div className='relative mb-4 flex w-full flex-wrap items-stretch '>
               <div className='flex items-center mb-2'>

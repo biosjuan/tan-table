@@ -1,4 +1,4 @@
-import { createColumnHelper } from '@tanstack/react-table';
+import { createColumnHelper, Column } from '@tanstack/react-table';
 import { Person } from '../../../Model/Person';
 import TableCell from './TableCell';
 import EditCell from './EditCell';
@@ -9,6 +9,7 @@ export const columns = [
   columnHelper.accessor('first_name', {
     header: 'First Name',
     cell: TableCell,
+
     meta: {
       type: 'text',
     },
