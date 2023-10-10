@@ -1,5 +1,5 @@
 import { createColumnHelper } from '@tanstack/react-table';
-import { Person } from '../../Model/Person';
+import { Person } from '../../../Model/Person';
 import TableCell from './TableCell';
 import EditCell from './EditCell';
 

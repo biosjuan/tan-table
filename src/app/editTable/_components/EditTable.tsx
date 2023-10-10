@@ -1,7 +1,6 @@
 'use client';
 import { useState } from 'react';
 import defaultData from '../../MOCK_DATA.json';
-import { Person } from '../../Model/Person';
 
 import {
   ColumnSort,
@@ -25,6 +24,9 @@ export const Table = () => {
   const table = useReactTable({
     data,
     columns,
+    initialState: {
+      pagination: { pageSize: 5 },
+    },
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     getFilteredRowModel: getFilteredRowModel(),

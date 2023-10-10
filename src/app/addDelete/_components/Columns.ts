@@ -38,7 +38,12 @@ export const columns = [
     header: 'Status',
     cell: TableCell,
     meta: {
-      type: 'text',
+      type: 'select',
+      options: [
+        { value: 'Complicated', label: 'Complicated' },
+        { value: 'Single', label: 'Single' },
+        { value: 'In_Relationship', label: 'In Relationship' },
+      ],
     },
   }),
   columnHelper.accessor('profile', {

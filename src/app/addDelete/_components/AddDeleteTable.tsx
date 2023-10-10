@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import defaultData from '../../MOCK_DATA.json';
 
 import {
@@ -15,17 +15,27 @@ import {
 
 import { columns } from './Columns';
 import './table.css';
+import { Person } from '@/Model/Person';
+import FooterCell from './FooterCell';
 
 export const Table = () => {
   const [data, setData] = useState(() => [...defaultData]);
   const [originalData, setOriginalData] = useState(() => [...defaultData]);
   const [editedRows, setEditedRows] = useState({});
+  const [rowId, setRowId] = useState({ id: 0 });
 
   const [sorting, setSorting] = useState<ColumnSort[]>([]);
   const [filtering, setFiltering] = useState('');
 
   const [columnResizeMode, setColumnResizeMode] =
     useState<ColumnResizeMode>('onChange');
+
+  // useEffect(() => {
+  //   setEditedRows((old: []) => ({
+  //     ...old,
+  //     [rowId.id]: !old[rowId.id],
+  //   }));
+  // }, [rowId]);
 
   const table = useReactTable({
     data,
@@ -36,6 +46,7 @@ export const Table = () => {
     },
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
+
     getFilteredRowModel: getFilteredRowModel(),
     getSortedRowModel: getSortedRowModel(),
     onSortingChange: setSorting,
@@ -47,10 +58,6 @@ export const Table = () => {
       editedRows,
       setEditedRows,
       revertData: (rowIndex: number, revert: boolean) => {
-        if (revert !== undefined) {
-          console.log(revert);
-        }
-
         if (revert) {
           setData((old) =>
             old.map((row, index) =>
@@ -76,6 +83,57 @@ export const Table = () => {
             return row;
           })
         );
+      },
+      addRow: () => {
+        const insertAtIndex = 0;
+        const newRow: Person = {
+          id: 0,
+          first_name: '',
+          last_name: '',
+          age: 0,
+          profile: false,
+          status: '',
+          visit: 0,
+        };
+        // const setFunc = (old: Person[]) => {
+        //   return [
+        //     ...old.slice(0, insertAtIndex),
+        //     newRow,
+        //     ...old.slice(insertAtIndex),
+        //   ];
+        // };
+        const updatedData = [newRow, ...data];
+        setData(updatedData);
+        setOriginalData(updatedData);
+
+        setEditedRows((old: []) => ({
+          ...old,
+          [rowId.id]: true,
+        }));
+        // setRowId({ id: rowId.id + 1 });
+        //   const obj: { [key: string]: boolean } = editedRows;
+        //   for (const key in obj) {
+        //     if (editedRows.hasOwnProperty(key)) {
+        //       const isEditSaved = obj[key];
+        //       if (!isEditSaved) {
+        //         // console.log(isEditSaved);
+        //         setRowId({ id: 0 });
+        //         // console.log('in', rowId.id);
+        //       }
+        //     }
+        //   }
+      },
+      removeRow: (rowIndex: number) => {
+        const setFilterFunc = (old: Person[]) =>
+          old.filter((_row: Person, index: number) => index !== rowIndex);
+        setData(setFilterFunc);
+        setOriginalData(setFilterFunc);
+      },
+      removeSelectedRows: (selectedRows: number[]) => {
+        const setFilterFunc = (old: Person[]) =>
+          old.filter((_row, index) => !selectedRows.includes(index));
+        setData(setFilterFunc);
+        setOriginalData(setFilterFunc);
       },
     },
   });
@@ -176,6 +234,13 @@ export const Table = () => {
                 </tr>
               ))}
             </tbody>
+            <tfoot>
+              <tr>
+                <th colSpan={table.getCenterLeafColumns().length} align='right'>
+                  <FooterCell table={table} />
+                </th>
+              </tr>
+            </tfoot>
           </table>
           <div className='flex flex-col items-end'>
             <div className='flex flex-col md:flex-row items-end md:items-center space-y-2 md:space-x-4'>
