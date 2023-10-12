@@ -1,0 +1,100 @@
+table {
+  position: relative;
+}
+
+th {
+    position: relative;
+  }
+  
+
+
+  .resizer {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 5px;
+    border-left: 2px dotted rgba(0, 0, 0, 0.2);
+    cursor: col-resize;
+    user-select: none;
+    touch-action: none;
+    padding-top: 2px;
+    padding-bottom: 2px;
+  }
+  
+  .resizer.isResizing {
+    background: blue;
+    opacity: 1;
+  }
+
+  @media (hover: hover) {
+    .resizer {
+      opacity: 0;
+    }
+  
+    *:hover > .resizer {
+      opacity: 1;
+    }
+  }
+
+/* Set the first two th elements (headers) to have a fixed position */
+thead tr th:nth-child(1) {
+  position: sticky;
+  left: 0; /* Adjust the 'left' property to control the sticky effect */
+  background-color: #fff; /* Background color of sticky columns */
+  z-index: 3; /* Ensure they are above other content */
+}
+thead tr th:nth-child(2) {
+  position: sticky;
+  left: 100px; /* Adjust the 'left' property to control the sticky effect */
+  background-color: #fff; /* Background color of sticky columns */
+  z-index: 2; /* Ensure they are above other content */
+}
+
+tbody tr td:nth-child(1) {
+  position: sticky;
+  left: 0; /* Adjust the 'left' property to control the sticky effect */
+  background-color: #fff; /* Background color of sticky columns */
+  z-index: 3; /* Ensure they are above other content */
+}
+
+tbody tr td:nth-child(2) {
+  position: sticky;
+  left: 100px; /* Adjust the 'left' property to control the sticky effect */
+  background-color: #fff; /* Background color of sticky columns */
+  z-index: 2; /* Ensure they are above other content */
+}
+
+
+
+/* Ensure that the rest of the columns scroll horizontally */
+
+
+
+/* th:first-child  {
+    position: sticky;
+    left: 0;
+    background-color: #ddd;
+  }
+
+th:nth-child(2) {
+    position: sticky;
+    left: var(--first-column-width);
+    background-color: #ddd;
+  }
+
+
+  
+td:first-child {
+    position: sticky;
+    left: 0;
+    background-color: #ddd;
+  }
+
+  td:nth-child(2) {
+    position: sticky;
+   left: var(--first-column-width);
+    background-color: #ddd;
+  } */
+  
+  
