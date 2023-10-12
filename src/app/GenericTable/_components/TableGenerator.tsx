@@ -19,6 +19,7 @@ interface TableGeneratorProps<T extends object> {
   columnConfig: ColumnConfig[];
   defaultObjectData: T;
   tableTitle: string;
+  saveTableFn: (data: T[]) => void;
 }
 
 function TableGenerator<T extends object>({
@@ -26,6 +27,7 @@ function TableGenerator<T extends object>({
   columnConfig,
   defaultObjectData,
   tableTitle,
+  saveTableFn,
 }: TableGeneratorProps<T>) {
   // Generate the table
   const columnHelper = createColumnHelper<T>();
@@ -54,6 +56,7 @@ function TableGenerator<T extends object>({
         defaultData={defaultData}
         defaultObjectData={defaultObjectData}
         tableTitle={tableTitle}
+        saveTableFn={saveTableFn}
       />
     </DndProvider>
   );

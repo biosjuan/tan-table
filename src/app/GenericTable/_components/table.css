@@ -49,6 +49,7 @@ thead tr th:nth-child(2) {
   left: 100px; /* Adjust the 'left' property to control the sticky effect */
   background-color: #fff; /* Background color of sticky columns */
   z-index: 2; /* Ensure they are above other content */
+  border-right: 1px solid lightgrey;
 }
 
 tbody tr td:nth-child(1) {
@@ -63,6 +64,7 @@ tbody tr td:nth-child(2) {
   left: 100px; /* Adjust the 'left' property to control the sticky effect */
   background-color: #fff; /* Background color of sticky columns */
   z-index: 2; /* Ensure they are above other content */
+  border-right: 1px solid lightgrey;
 }
 
 

@@ -1,6 +1,4 @@
 'use client';
-import { DndProvider } from 'react-dnd';
-import { HTML5Backend } from 'react-dnd-html5-backend';
 import data from '../MOCK_DATA.json';
 import { Person } from '@/Model/Person';
 import TableGenerator from './_components/TableGenerator';
@@ -59,6 +57,83 @@ const columns: ColumnConfig[] = [
       ],
     },
   },
+  // {
+  //   header: 'Test Column 1',
+  //   accessor: 'profile',
+  //   meta: {
+  //     type: 'select',
+  //     options: [
+  //       { value: 'true', label: 'Active' },
+  //       { value: '', label: 'No Active' },
+  //     ],
+  //   },
+  // },
+  // {
+  //   header: 'Test Column 2',
+  //   accessor: 'profile',
+  //   meta: {
+  //     type: 'select',
+  //     options: [
+  //       { value: 'true', label: 'Active' },
+  //       { value: '', label: 'No Active' },
+  //     ],
+  //   },
+  // },
+  // {
+  //   header: 'Test Column 3',
+  //   accessor: 'profile',
+  //   meta: {
+  //     type: 'select',
+  //     options: [
+  //       { value: 'true', label: 'Active' },
+  //       { value: '', label: 'No Active' },
+  //     ],
+  //   },
+  // },
+  // {
+  //   header: 'Test Column 4',
+  //   accessor: 'profile',
+  //   meta: {
+  //     type: 'select',
+  //     options: [
+  //       { value: 'true', label: 'Active' },
+  //       { value: '', label: 'No Active' },
+  //     ],
+  //   },
+  // },
+  // {
+  //   header: 'Test Column 5',
+  //   accessor: 'profile',
+  //   meta: {
+  //     type: 'select',
+  //     options: [
+  //       { value: 'true', label: 'Active' },
+  //       { value: '', label: 'No Active' },
+  //     ],
+  //   },
+  // },
+  // {
+  //   header: 'Test Column 6',
+  //   accessor: 'profile',
+  //   meta: {
+  //     type: 'select',
+  //     options: [
+  //       { value: 'true', label: 'Active' },
+  //       { value: '', label: 'No Active' },
+  //     ],
+  //   },
+  // },
+  // {
+  //   header: 'Test Column 7',
+  //   accessor: 'profile',
+  //   meta: {
+  //     type: 'select',
+  //     options: [
+  //       { value: 'true', label: 'Active' },
+  //       { value: '', label: 'No Active' },
+  //     ],
+  //   },
+  // },
 ];
 
 const defaultObjectData: Person = {
@@ -72,6 +147,10 @@ const defaultObjectData: Person = {
 };
 
 function Home() {
+  const saveTableFn = (data: Person[]) => {
+    console.log(data[0]);
+  };
+
   return (
     <main className='flex min-h-screen flex-col justify-between p-24'>
       <TableGenerator
@@ -79,6 +158,7 @@ function Home() {
         defaultData={data}
         defaultObjectData={defaultObjectData}
         tableTitle='Generic Table'
+        saveTableFn={saveTableFn}
       />
     </main>
   );

@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import {
   ColumnOrderState,
@@ -23,6 +23,7 @@ interface TableProps<T extends object> {
   columns: ColumnDef<T>[];
   defaultObjectData: T;
   tableTitle: string;
+  saveTableFn: (data: T[]) => void;
 }
 
 function GenericTable<T extends object>({
@@ -30,6 +31,7 @@ function GenericTable<T extends object>({
   columns,
   defaultObjectData,
   tableTitle,
+  saveTableFn,
 }: TableProps<T>) {
   const [data, setData] = useState<T[]>(() => [...defaultData]);
   const [originalData, setOriginalData] = useState(() => [...defaultData]);
@@ -89,8 +91,8 @@ function GenericTable<T extends object>({
       updateData: (rowIndex: number, columnId: string, value: string) => {
         setData((old) =>
           old.map((row, index) => {
-            // console.log(row);
             if (index === rowIndex) {
+              console.log(rowIndex, columnId, value);
               return {
                 ...old[rowIndex],
                 [columnId]: value,
@@ -203,6 +205,12 @@ function GenericTable<T extends object>({
           </table>
           <div className='flex flex-col items-end'>
             <div className='flex flex-col md:flex-row items-end md:items-center space-y-2 md:space-x-4'>
+              <button
+                className='bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-4 mt-2 border border-blue-700 rounded'
+                onClick={() => saveTableFn(data)}
+              >
+                Save Table
+              </button>
               <div className='flex items-center space-x-4 mt-2'>
                 <label htmlFor='dropdown' className='text-sm text-gray-600'>
                   Show
@@ -344,9 +352,9 @@ function GenericTable<T extends object>({
         </div>
       </div>
 
-      <div className='table-container max-w-screen-lg mx-auto'>
+      <div className='flex space-x-10 max-w-screen-lg mx-auto'>
         <pre>{JSON.stringify(table.getState().columnOrder, null, 2)}</pre>
-        {/* <pre>{JSON.stringify(data, null, '\t')}</pre> */}
+        <pre>{JSON.stringify(data, null, '\t')}</pre>
       </div>
     </div>
   );
