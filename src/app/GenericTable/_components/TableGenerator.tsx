@@ -31,10 +31,10 @@ function TableGenerator<T extends object>({
 }: TableGeneratorProps<T>) {
   // Generate the table
   const columnHelper = createColumnHelper<T>();
-  const columns = columnConfig.map((column) => {
+  const columns = columnConfig.map((column, index) => {
     return columnHelper.accessor(column.accessor as unknown as AccessorFn<T>, {
       header: column.header,
-      id: column.accessor,
+      id: index + '',
       cell: TableCell,
       meta: column.meta,
     });

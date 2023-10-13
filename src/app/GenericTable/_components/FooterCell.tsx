@@ -8,7 +8,7 @@ const FooterCell: React.FC<any> = ({ table }) => {
     table.resetRowSelection();
   };
   return (
-    <div className='px-2 py-1 bg-transparent border-none flex space-x-3 justify-end'>
+    <div className='px-2 py-1 bg-transparent border-none flex space-x-3 justify-start'>
       {selectedRows.length > 0 ? (
         <button className='' onClick={removeRows}>
           Remove Selected x

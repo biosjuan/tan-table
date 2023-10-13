@@ -104,7 +104,7 @@ function GenericTable<T extends object>({
       },
       addRow: () => {
         const newRow = defaultObjectData;
-
+        console.log('add');
         const updatedData = [newRow, ...data];
         setData(updatedData);
         setOriginalData(updatedData);
@@ -167,42 +167,54 @@ function GenericTable<T extends object>({
               </div>
             </div>
           </div>
-          <table className='w-full text-left text-sm font-light border rounded-md dark:border-neutral-500'>
-            <thead className='border-b font-medium dark:border-neutral-500'>
-              {table.getHeaderGroups().map((headerGroup) => (
-                <tr key={headerGroup.id}>
-                  {headerGroup.headers.map((header) => (
-                    <DraggableColumnHeader
-                      key={header.id}
-                      header={header}
-                      table={table}
-                    />
-                  ))}
+          <div className='overflow-x-auto'>
+            <table
+              className='w-full text-left text-sm font-light border rounded-md dark:border-neutral-500'
+              {...{
+                style: {
+                  width: table.getCenterTotalSize(),
+                },
+              }}
+            >
+              <thead className='border-b font-medium dark:border-neutral-500'>
+                {table.getHeaderGroups().map((headerGroup) => (
+                  <tr key={headerGroup.id}>
+                    {headerGroup.headers.map((header) => (
+                      <DraggableColumnHeader
+                        key={header.id}
+                        header={header}
+                        table={table}
+                      />
+                    ))}
+                  </tr>
+                ))}
+              </thead>
+              <tbody>
+                {table.getRowModel().rows.map((row) => (
+                  <tr key={row.id} className='border-b dark:border-neutral-500'>
+                    {row.getVisibleCells().map((cell) => (
+                      <td key={cell.id} className='whitespace-nowrap px-6 py-4'>
+                        {flexRender(
+                          cell.column.columnDef.cell,
+                          cell.getContext()
+                        )}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th
+                    colSpan={table.getCenterLeafColumns().length}
+                    align='right'
+                  >
+                    <FooterCell table={table} />
+                  </th>
                 </tr>
-              ))}
-            </thead>
-            <tbody>
-              {table.getRowModel().rows.map((row) => (
-                <tr key={row.id} className='border-b dark:border-neutral-500'>
-                  {row.getVisibleCells().map((cell) => (
-                    <td key={cell.id} className='whitespace-nowrap px-6 py-4'>
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext()
-                      )}
-                    </td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-            <tfoot>
-              <tr>
-                <th colSpan={table.getCenterLeafColumns().length} align='right'>
-                  <FooterCell table={table} />
-                </th>
-              </tr>
-            </tfoot>
-          </table>
+              </tfoot>
+            </table>
+          </div>
           <div className='flex flex-col items-end'>
             <div className='flex flex-col md:flex-row items-end md:items-center space-y-2 md:space-x-4'>
               <button

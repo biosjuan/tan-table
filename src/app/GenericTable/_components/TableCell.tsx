@@ -6,7 +6,12 @@ type Option = {
   value: string;
 };
 
-const TableCell: React.FC<any> = ({ getValue, row, column, table }) => {
+const TableCell: React.FC<{
+  getValue: any;
+  row: any;
+  column: any;
+  table: any;
+}> = ({ getValue, row, column, table }) => {
   const initialValue = getValue();
   const columnMeta = column.columnDef.meta;
   const tableMeta = table.options.meta;

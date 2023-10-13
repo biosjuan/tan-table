@@ -57,83 +57,83 @@ const columns: ColumnConfig[] = [
       ],
     },
   },
-  // {
-  //   header: 'Test Column 1',
-  //   accessor: 'profile',
-  //   meta: {
-  //     type: 'select',
-  //     options: [
-  //       { value: 'true', label: 'Active' },
-  //       { value: '', label: 'No Active' },
-  //     ],
-  //   },
-  // },
-  // {
-  //   header: 'Test Column 2',
-  //   accessor: 'profile',
-  //   meta: {
-  //     type: 'select',
-  //     options: [
-  //       { value: 'true', label: 'Active' },
-  //       { value: '', label: 'No Active' },
-  //     ],
-  //   },
-  // },
-  // {
-  //   header: 'Test Column 3',
-  //   accessor: 'profile',
-  //   meta: {
-  //     type: 'select',
-  //     options: [
-  //       { value: 'true', label: 'Active' },
-  //       { value: '', label: 'No Active' },
-  //     ],
-  //   },
-  // },
-  // {
-  //   header: 'Test Column 4',
-  //   accessor: 'profile',
-  //   meta: {
-  //     type: 'select',
-  //     options: [
-  //       { value: 'true', label: 'Active' },
-  //       { value: '', label: 'No Active' },
-  //     ],
-  //   },
-  // },
-  // {
-  //   header: 'Test Column 5',
-  //   accessor: 'profile',
-  //   meta: {
-  //     type: 'select',
-  //     options: [
-  //       { value: 'true', label: 'Active' },
-  //       { value: '', label: 'No Active' },
-  //     ],
-  //   },
-  // },
-  // {
-  //   header: 'Test Column 6',
-  //   accessor: 'profile',
-  //   meta: {
-  //     type: 'select',
-  //     options: [
-  //       { value: 'true', label: 'Active' },
-  //       { value: '', label: 'No Active' },
-  //     ],
-  //   },
-  // },
-  // {
-  //   header: 'Test Column 7',
-  //   accessor: 'profile',
-  //   meta: {
-  //     type: 'select',
-  //     options: [
-  //       { value: 'true', label: 'Active' },
-  //       { value: '', label: 'No Active' },
-  //     ],
-  //   },
-  // },
+  {
+    header: 'Test Column 1',
+    accessor: 'profile',
+    meta: {
+      type: 'select',
+      options: [
+        { value: 'true', label: 'Active' },
+        { value: '', label: 'No Active' },
+      ],
+    },
+  },
+  {
+    header: 'Test Column 2',
+    accessor: 'profile',
+    meta: {
+      type: 'select',
+      options: [
+        { value: 'true', label: 'Active' },
+        { value: '', label: 'No Active' },
+      ],
+    },
+  },
+  {
+    header: 'Test Column 3',
+    accessor: 'profile',
+    meta: {
+      type: 'select',
+      options: [
+        { value: 'true', label: 'Active' },
+        { value: '', label: 'No Active' },
+      ],
+    },
+  },
+  {
+    header: 'Test Column 4',
+    accessor: 'profile',
+    meta: {
+      type: 'select',
+      options: [
+        { value: 'true', label: 'Active' },
+        { value: '', label: 'No Active' },
+      ],
+    },
+  },
+  {
+    header: 'Test Column 5',
+    accessor: 'profile',
+    meta: {
+      type: 'select',
+      options: [
+        { value: 'true', label: 'Active' },
+        { value: '', label: 'No Active' },
+      ],
+    },
+  },
+  {
+    header: 'Test Column 6',
+    accessor: 'profile',
+    meta: {
+      type: 'select',
+      options: [
+        { value: 'true', label: 'Active' },
+        { value: '', label: 'No Active' },
+      ],
+    },
+  },
+  {
+    header: 'Test Column 7',
+    accessor: 'profile',
+    meta: {
+      type: 'select',
+      options: [
+        { value: 'true', label: 'Active' },
+        { value: '', label: 'No Active' },
+      ],
+    },
+  },
 ];
 
 const defaultObjectData: Person = {
@@ -149,6 +149,8 @@ const defaultObjectData: Person = {
 function Home() {
   const saveTableFn = (data: Person[]) => {
     console.log(data[0]);
+    console.log(data[1]);
+    console.log(data[2]);
   };
 
   return (
